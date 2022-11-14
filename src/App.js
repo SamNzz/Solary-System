@@ -1,8 +1,9 @@
-import * as THREE from 'three'
 // import { LayerMaterial, Depth } from 'lamina'
-import { Billboard, Center, Cloud, OrbitControls, Shadow, Sparkles, Stars, Text3D } from '@react-three/drei';
+import { Billboard, Center, Cloud, OrbitControls, PerspectiveCamera, Ring, Shadow, Sparkles, Stars, Text3D, Torus } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import './App.css';
+import Planet from './components/Planet';
+import Test from './components/test';
 
 function App() {
   return (
@@ -11,54 +12,23 @@ function App() {
         <Canvas>
           <hemisphereLight intensity={0.5} color="white" groundColor="black" />
           <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-          <Sphere name="Sun" color="yellow" size={2} amount={100} emissive="orange" glow="lightyellow" />
-          <Sphere name="Mercury" position={[5.5, 0, 0]} size={.7} color="gray" />
-          <Sphere name="Venus" position={[8, 0, 0]} size={1.1} color="brown" />
-          <Sphere name="Earth" position={[12, 0, 0]} size={1.4} color="blue" cloud={true} />
-          <Sphere name="Mars" position={[15.5, 0, 0]} size={.9} color="brown" />
-          <Sphere name="Jupiter" position={[19, 0, 0]} size={2} color="orange" />
-          <Sphere name="Saturn" position={[24, 0, 0]} size={1.7} color="gray" />
-          <Sphere name="Uranus" position={[28, 0, 0]} size={1.4} color="bluegray" />
-          <Sphere name="Neptune" position={[32, 0, 0]} size={1.1} color="blue" />
-          <Sphere name="Pluto" position={[35.5, 0, 0]} size={.5} color="" />
-          <OrbitControls />
+          <Planet name="Sun" size={2} amount={100} color="yellow" emissive="orange" glow="lightyellow" />
+          <Planet name="Mercury" position={[5.5, 0, 0]} size={.7} color="gray" />
+          <Planet name="Venus" position={[8, 0, 0]} size={1.1} color="brown" />
+          <Planet name="Earth" position={[12, 0, 0]} size={1.4} color="blue" cloud={true} />
+          <Planet name="Mars" position={[15.5, 0, 0]} size={.9} color="brown" />
+          <Planet name="Jupiter" position={[19, 0, 0]} size={2} color="orange" />
+          <Planet name="Saturn" position={[24, 0, 0]} size={1.7} color="gray" />
+          <Planet name="Uranus" position={[28, 0, 0]} size={1.4} color="bluegray" />
+          <Planet name="Neptune" position={[32, 0, 0]} size={1.1} color="blue" />
+          <Planet name="Pluto" position={[35.5, 0, 0]} size={.5} color="" />
+          <Test />
+          <OrbitControls position={[0, 0, 10]} />
         </Canvas>
       </header>
     </div>
   );
 }
-
-const Sphere = ({ name, size = 1, amount = 0, color = 'white', emissive, glow, cloud = false, ...props }) => (
-  <mesh {...props}>
-    <sphereGeometry args={[size, 64, 64]} />
-    <meshPhysicalMaterial roughness={0} color={color} emissive={emissive || color} envMapIntensity={0.2} />
-    {cloud && <Cloud
-      opacity={0.5}
-      speed={1} // Rotation speed
-      width={.001} // Width of the full cloud
-      depth={.5} // Z-dir depth
-      segments={2} // Number of particles
-    />}
-    <Center position={[0, size * 1.5, 0]}>
-      <Text3D
-        curveSegments={32}
-        bevelEnabled
-        bevelSize={0.04}
-        bevelThickness={0.1}
-        height={0.5}
-        lineHeight={0.5}
-        letterSpacing={-0.06}
-        size={size/2}
-        font="/Inter_Bold.json"
-      >
-        {name}
-        <meshNormalMaterial />
-      </Text3D>
-    </Center>
-    {/* <Glow scale={size * 1.2} near={-25} color={glow || emissive || color} /> */}
-    {amount > 0 && <Sparkles count={amount} scale={size * 3} size={10} speed={3} />}
-  </mesh>
-)
 
 // const Glow = ({ color, scale = 0.5, near = -2, far = 1.4 }) => (
 //   <Billboard>
