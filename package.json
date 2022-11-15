@@ -1,7 +1,7 @@
 {
   "name": "solary-system",
   "version": "0.1.0",
-  "homepage": "https://SamNzz.github.io/solary-system",
+  "homepage": "https://SamNzz.github.io/Solary-System",
   "private": true,
   "dependencies": {
     "@react-three/drei": "^9.40.0",
