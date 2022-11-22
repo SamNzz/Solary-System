@@ -1,31 +1,32 @@
 // import { LayerMaterial, Depth } from 'lamina'
-import { Billboard, Center, Cloud, OrbitControls, PerspectiveCamera, Ring, Shadow, Sparkles, Stars, Text3D, Torus } from '@react-three/drei';
+import { Billboard, Box, Center, Cloud, OrbitControls, PerspectiveCamera, Plane, Ring, Shadow, Sparkles, Stars, Text3D, Torus, useTexture } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import './App.css';
 import Planet from './components/Planet';
-import Test from './components/test';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <Canvas>
-          <hemisphereLight intensity={0.5} color="white" groundColor="black" />
+          <pointLight position={[5, 3, 5]} intensity={1.5} />
+          {/* <hemisphereLight intensity={0.5} color="white" groundColor="black" /> */}
+          {/* <hemisphereLight intensity={1} color="white" /> */}
           <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-          <Planet name="Sun" size={2} amount={100} color="yellow" emissive="orange" glow="lightyellow" />
-          <Planet name="Mercury" position={[5.5, 0, 0]} size={.7} color="gray" />
-          <Planet name="Venus" position={[8, 0, 0]} size={1.1} color="brown" />
-          <Planet name="Earth" position={[12, 0, 0]} size={1.4} color="blue" cloud={true} />
-          <Planet name="Mars" position={[15.5, 0, 0]} size={.9} color="brown" />
-          <Planet name="Jupiter" position={[19, 0, 0]} size={2} color="orange" />
-          <Planet name="Saturn" position={[24, 0, 0]} size={1.7} color="gray" />
-          <Planet name="Uranus" position={[28, 0, 0]} size={1.4} color="bluegray" />
-          <Planet name="Neptune" position={[32, 0, 0]} size={1.1} color="blue" />
-          <Planet name="Pluto" position={[35.5, 0, 0]} size={.5} color="" />
-          <Test />
+          <Planet name="earth" position={[0, 0, 0]} size={.6} atm={true} rSpeed={0.0007} />
+          <Planet name="mercury" position={[5.5, 0, 0]} size={.7} />
+          <Planet name="mars" position={[15.5, 0, 0]} size={.9} />
+          <Planet name="venus" position={[8, 0, 0]} size={1.1} />
+          {/* <Planet name="sun" size={2} />
+          <Planet name="jupiter" position={[19, 0, 0]} size={2} />
+          <Planet name="saturn" position={[24, 0, 0]} size={1.7} />
+          <Planet name="uranus" position={[28, 0, 0]} size={1.4} />
+          <Planet name="neptune" position={[32, 0, 0]} size={1.1} /> */}
+          {/* <Planet name="pluto" position={[35.5, 0, 0]} size={.5} /> */}
           <OrbitControls position={[0, 0, 10]} />
         </Canvas>
       </header>
+          {/* <img src='/Ground054_1K_Color.jpg' /> */}
     </div>
   );
 }
