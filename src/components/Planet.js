@@ -1,7 +1,7 @@
-import { Text3D, Torus, useTexture } from '@react-three/drei';
+import { useTexture } from '@react-three/drei';
 import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { addCoordinates, capitalize, texturePath } from '../helpers';
+import { addCoordinates, texturePath } from '../helpers';
 
 const Atmosphere = ({ name, size, rSpeed, ...props }) => {
     const rotation = useRef()
@@ -22,7 +22,7 @@ const Atmosphere = ({ name, size, rSpeed, ...props }) => {
     )
 }
 
-export const Planet = ({ name, size = 1, bump = 0, atm = false, rSpeed = .001, ...props }) => {
+export const Planet = ({ name, size = 1, bump = .3, atm = false, rSpeed = .0007, ...props }) => {
     const rotation = useRef()
     const groundTextures = useTexture({
         map: texturePath(name, 'Color'),

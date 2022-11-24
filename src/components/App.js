@@ -1,8 +1,9 @@
 // import { LayerMaterial, Depth } from 'lamina'
-import { Billboard, Box, Center, Cloud, OrbitControls, PerspectiveCamera, Plane, Ring, Shadow, Sparkles, Stars, Text3D, Torus, useTexture } from '@react-three/drei';
+import React from 'react'
+import { OrbitControls, Stars } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import './App.css';
-import Planet from './components/Planet';
+import '../styles/App.css';
+import Planet from './Planet';
 
 function App() {
   return (
@@ -26,29 +27,8 @@ function App() {
           <OrbitControls position={[0, 0, 10]} />
         </Canvas>
       </header>
-          {/* <img src='/Ground054_1K_Color.jpg' /> */}
     </div>
   );
 }
-
-// const Glow = ({ color, scale = 0.5, near = -2, far = 1.4 }) => (
-//   <Billboard>
-//     <mesh>
-//       <circleGeometry args={[2 * scale, 16]} />
-//       <LayerMaterial
-//         transparent
-//         depthWrite={false}
-//         blending={THREE.CustomBlending}
-//         blendEquation={THREE.AddEquation}
-//         blendSrc={THREE.SrcAlphaFactor}
-//         blendDst={THREE.DstAlphaFactor}>
-//         <Depth colorA={color} colorB="black" alpha={1} mode="normal" near={near * scale} far={far * scale} origin={[0, 0, 0]} />
-//         <Depth colorA={color} colorB="black" alpha={0.5} mode="add" near={-40 * scale} far={far * 1.2 * scale} origin={[0, 0, 0]} />
-//         <Depth colorA={color} colorB="black" alpha={1} mode="add" near={-15 * scale} far={far * 0.7 * scale} origin={[0, 0, 0]} />
-//         <Depth colorA={color} colorB="black" alpha={1} mode="add" near={-10 * scale} far={far * 0.68 * scale} origin={[0, 0, 0]} />
-//       </LayerMaterial>
-//     </mesh>
-//   </Billboard>
-// )
 
 export default App;
